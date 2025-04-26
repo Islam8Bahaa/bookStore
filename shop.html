@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="gramentheme" />
+  <meta name="description" content="Bony Store" />
+  <title>Bony Store - Shop</title>
+  <link rel="shortcut icon" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
+  <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+  <link rel="stylesheet" href="assets/css/meanmenu.css" />
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/css/nice-select.css" />
+  <link rel="stylesheet" href="assets/css/icomoon.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+  <div class="cursor-follower"></div>
+  <div id="preloader" class="preloader"></div>
+  <button id="back-top" class="back-to-top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- Header -->
+  <header class="header-2 sticky-header"></header>
+  <div class="header-2-section"></div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-wrapper">
+    <div class="container">
+      <div class="page-heading">
+        <h1>Shop</h1>
+        <div class="page-header">
+          <ul class="breadcrumb-items">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa-solid fa-chevron-right"></i></li>
+            <li>Shop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop Section -->
+  <section class="shop-section fix section-padding">
+    <div class="container">
+      <div class="shop-default-wrapper">
+        <div class="row">
+          <!-- Sidebar -->
+          <div class="col-xl-3 col-lg-4 order-2 order-md-1">
+            <div class="main-sidebar">
+              <!-- Search -->
+              <div class="single-sidebar-widget">
+                <div class="wid-title">
+                  <h5>Search</h5>
+                </div>
+                <div class="search-toggle-box">
+                  <div class="input-area search-container">
+                    <input class="search-input" type="text" placeholder="Search books..." />
+                    <button class="cmn-btn search-icon">
+                      <i class="far fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="single-sidebar-widget">
+                <div class="wid-title">
+                  <h5>Categories</h5>
+                </div>
+                <div class="categories-list">
+                  <button class="nav-link active" data-category="all">All Categories</button>
+                  <button class="nav-link" data-category="novel">Novels</button>
+                  <button class="nav-link" data-category="poetry">Poetry</button>
+                  <button class="nav-link" data-category="history">History</button>
+                  <button class="nav-link" data-category="science">Science</button>
+                </div>
+              </div>
+
+              <!-- Price Filter -->
+              <div class="single-sidebar-widget mb-50">
+                <div class="wid-title">
+                  <h5>Filter By Price</h5>
+                </div>
+                <div class="price-filter">
+                  <div class="price-input">
+                    <div class="field">
+                      <span>Min Price:</span>
+                      <input type="number" class="input-min" value="0">
+                    </div>
+                    <div class="field">
+                      <span>Max Price:</span>
+                      <input type="number" class="input-max" value="1000">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Books Grid -->
+          <div class="col-xl-9 col-lg-8 order-1 order-md-2">
+            <div class="shop-header mb-4">
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <p class="results-count">Showing all books</p>
+                </div>
+                <div class="col-md-6">
+                  <select id="sortSelect" class="form-select">
+                    <option value="default">Default sorting</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Sort by name</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" id="booksContainer">
+              <!-- Books will be rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section footer-bg"></footer>
+
+  <!-- Scripts -->
+  <script src="./js/ui/Preloader.js"></script>
+  <script src="./js/ui/Header.js"></script>
+  <script src="./js/ui/Header-sticky.js"></script>
+  <script src="./js/ui/Footer.js"></script>
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="js/axios.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html
