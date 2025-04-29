@@ -97,8 +97,9 @@ document.querySelector(".header-2-section").innerHTML = `
                 <i class="fa-regular fa-heart"></i>
               </a>
               <a href="shop-cart.html" class="cart-icon">
-                <i class="fa-regular fa-cart-shopping"></i>
-              </a>
+                  <i class="fa-regular fa-cart-shopping"></i>
+                  <span class="cart-count">0</span>
+                </a>
               <div class="header-humbager ml-30">
                 <a class="sidebar__toggle" href="javascript:void(0)">
                   <div class="bar-icon-2">
