@@ -1,3 +1,5 @@
+// js/shop-details.js
+
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -22,12 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("#bookName").innerText = res.name;
     document.querySelector("#bookDesc").innerText = res.desc;
 
-    // Inject your new `additional` field:
+    // Additional info
     const addEl = document.querySelector('#bookAdditional');
     if (res.additional) {
       addEl.innerText = res.additional;
     } else {
-      addEl.innerText = '';  // or hide the element
+      addEl.innerText = '';
     }
 
     // Cover image
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       coverEl.alt = res.name;
     }
 
-    // Price (salePrice if present, else price)
+    // Price
     const priceToShow = res.salePrice ?? res.price;
     document.querySelector("#bookPrice").innerText = currency + priceToShow;
 
@@ -46,18 +48,56 @@ document.addEventListener('DOMContentLoaded', () => {
     if (res.content?.url) {
       pdfEl.href = `${domain}${res.content.url}`;
       pdfEl.download = "";
-      pdfEl.innerText = "Download PDF";
+      pdfEl.innerHTML = `<i class="fa-solid fa-file-pdf"></i> Download PDF`;
       pdfEl.style.display = "inline-block";
     } else {
       pdfEl.style.display = "none";
     }
 
+    // ─── AUDIO PREVIEW (15-minute cap) ────────────────────────────────────────
+    const audioItem = Array.isArray(res.audio) ? res.audio[0] : res.audio;
+    const audioUrl  = audioItem?.url;                     // now picks the first file
+    const audioBtn  = document.getElementById("audioBtn");
+    const audioEl   = document.getElementById("audioPlayer");
+    const MAX_PREVIEW = 15 * 60;   
+
+    if (audioUrl) {
+      const src = `${domain}${audioUrl}`;
+      audioEl.src            = src;
+      audioEl.style.display  = "none";
+      audioBtn.style.display = "inline-block";
+
+      // start playback on click
+      audioBtn.addEventListener("click", () => {
+        audioEl.style.display  = "inline-block";
+        audioEl.play();
+      });
+
+      // stop after preview limit
+      audioEl.addEventListener("timeupdate", () => {
+        if (audioEl.currentTime >= MAX_PREVIEW) {
+          audioEl.pause();
+          // audioEl.style.display  = "none";
+          alert("15-minute preview ended.");
+        }
+      });
+
+      // prevent seeking past limit
+      audioEl.addEventListener("seeking", () => {
+        if (audioEl.currentTime > MAX_PREVIEW) {
+          audioEl.currentTime = MAX_PREVIEW;
+        }
+      });
+    } else {
+      audioEl.style.display  = "none";
+      audioBtn.style.display = "none";
+    }
+
+    // Add-to-cart button wiring
     const btn = document.getElementById("addToCartBtn");
     btn.dataset.id    = String(res.id);
     btn.dataset.name  = res.name;
-    btn.dataset.price = ((res.salePrice ?? res.price)).toFixed(2);
-    btn.dataset.cover = res.cover?.url
-        ? `${domain}${res.cover.url}`
-        : "";
+    btn.dataset.price = (priceToShow).toFixed(2);
+    btn.dataset.cover = res.cover?.url ? `${domain}${res.cover.url}` : "";
   });
 });
